@@ -32,6 +32,7 @@ jobs:
 
     - name: Update github page
       run: |
+        ls -a
         git clone git@github.com:i-am-wizard/allure-ghpage.git
         git config --global user.email "i-am-wizard@github.com"
         git config --global user.name "i am wizard"
