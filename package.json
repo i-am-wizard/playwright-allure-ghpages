@@ -1,0 +1,26 @@
+{
+  "name": "playwright-allure-ghpages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:e2e": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i-am-wizard/playwright-allure-ghpages.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/i-am-wizard/playwright-allure-ghpages/issues"
+  },
+  "homepage": "https://github.com/i-am-wizard/playwright-allure-ghpages#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "@types/node": "^20.11.4",
+    "allure-commandline": "^2.25.0",
+    "allure-playwright": "^2.10.0"
+  }
+}
