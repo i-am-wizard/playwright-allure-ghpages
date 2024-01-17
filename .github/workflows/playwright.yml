@@ -6,6 +6,8 @@ on:
     branches: [ main, master ]
 jobs:
   test:
+    env:
+      GH_TOKEN: ${{ github.token }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -15,8 +17,8 @@ jobs:
         node-version: 18
     - name: Install dependencies
       run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+    - name: Install Playwright chromium
+      run: npx playwright install --with-deps chromium
     - name: Run Playwright tests
       run: npx playwright test
     - name: Generate Allure report
