@@ -26,6 +26,8 @@ jobs:
     - name: Update github age
       run: |
         gh repo clone i-am-wizard/allure-ghpage
+        git config user.email "i-am-wizard@github.com"
+        git config user.name "i am wizard"
         git add .
         git commit -m "pushed new allure report"
         git push
