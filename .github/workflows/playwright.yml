@@ -13,14 +13,6 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright chromium
-      run: npx playwright install --with-deps chromium
-    - name: Run Playwright tests
-      run: npx playwright test
-    - name: Generate Allure report
-      run: npx allure generate --clean
     - name: Setup SSH
       env:
         PRIVATE_DEPLOY_KEY: ${{ secrets.PRIVATE_DEPLOY_KEY }}
@@ -29,15 +21,22 @@ jobs:
         echo "${PRIVATE_DEPLOY_KEY}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com >> ~/.ssh/known_hosts
-
-    - name: Update github page with new report
+    - name: Install dependencies
+      run: npm ci
+    - name: Install Playwright chromium
+      run: npx playwright install --with-deps chromium
+    - name: Run Playwright tests
+      run: npx playwright test
+    - name: Checkout Allure pages
       run: |
         git clone git@github.com:i-am-wizard/allure-ghpage.git
         git config --global user.email "i-am-wizard@github.com"
         git config --global user.name "i am wizard"
-        
+    - name: Update github page with new report
+      run: |
+        cd -r allure-ghpage/history/ allure-results
+        npx allure generate --clean
         cp -r allure-report/*  allure-ghpage
-      
         cd allure-ghpage
         git remote add dest git@github.com:i-am-wizard/allure-ghpage.git
         git add .
