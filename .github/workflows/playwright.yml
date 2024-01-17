@@ -36,7 +36,7 @@ jobs:
         git config --global user.email "i-am-wizard@github.com"
         git config --global user.name "i am wizard"
         
-        cp -r allure-report/  allure-ghpage
+        cp -r allure-report/*  allure-ghpage
       
         cd allure-ghpage
         git remote add dest git@github.com:i-am-wizard/allure-ghpage.git
