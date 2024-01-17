@@ -35,7 +35,7 @@ jobs:
         git config --global user.name "i am wizard"
     - name: Update github page with new report
       run: |
-        cp -r allure-ghpage/history/ allure-results
+        cp -r allure-ghpage/history allure-results
         npx allure generate --clean
         cp -r allure-report/*  allure-ghpage
         cd allure-ghpage
