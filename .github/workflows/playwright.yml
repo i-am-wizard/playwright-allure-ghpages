@@ -30,12 +30,14 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-    - name: Update github page
+    - name: Update github page with new report
       run: |
-        ls -a
         git clone git@github.com:i-am-wizard/allure-ghpage.git
         git config --global user.email "i-am-wizard@github.com"
         git config --global user.name "i am wizard"
+        
+        cp -r allure-report/  allure-ghpage
+      
         cd allure-ghpage
         git remote add dest git@github.com:i-am-wizard/allure-ghpage.git
         git add .
