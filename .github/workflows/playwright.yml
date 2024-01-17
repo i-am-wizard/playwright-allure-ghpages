@@ -9,7 +9,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: actions/setup-node@v3
       with:
         node-version: 18
@@ -19,9 +19,18 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run: npx playwright test
+    - name: Generate Allure report
+      run: npx allure generate --clean
+    - name: Update github age
+      run: |
+        gh repo clone i-am-wizard/allure-ghpage
+        git add .
+        git commit -m "pushed new allure report"
+        git push
     - uses: actions/upload-artifact@v3
       if: always()
       with:
         name: allure-report
-        path: allure-results/
+        path: allure-report/
         retention-days: 30
+
