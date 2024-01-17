@@ -36,7 +36,6 @@ jobs:
     - name: Update github page with new report
       run: |
         cp -r allure-ghpage/history allure-results
-        ls allure-results
         npx allure generate --clean
         cp -r allure-report/*  allure-ghpage
         cd allure-ghpage
