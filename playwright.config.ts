@@ -27,7 +27,12 @@ export default defineConfig({
       {
         detail: true,
         outputFolder: "my-allure-results",
-        suiteTitle: false,
+        environmentInfo: {
+          framework: "playwright",
+        },
+        executorInfo: {
+          buildUrl: "www.google.com"
+        }
       },
     ],
   ],
