@@ -39,8 +39,8 @@ jobs:
       run: |
         json_string=$(
           jq --null-input \
-          --arg name "${GITHUB_ACTION}" \
-          --arg type "Github Action" \
+          --arg name "Playwright" \
+          --arg type "end to end" \
           --arg url "www.google.com" \
           --arg buildOrder "${GITHUB_RUN_NUMBER}" \
           --arg buildName "${GITHUB_WORKFLOW}" \
