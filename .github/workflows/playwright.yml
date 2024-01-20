@@ -39,13 +39,13 @@ jobs:
       run: |
         json_string=$(
           jq --null-input \
-          --arg name "${GITHUB_WORKFLOW}" \
+          --arg name "${GITHUB_ACTION}" \
           --arg type "Github Action" \
           --arg url "www.google.com" \
           --arg buildOrder "${GITHUB_RUN_ID}" \
           --arg buildName "${GITHUB_WORKFLOW}" \
           --arg buildUrl "https://github.com/i-am-wizard/playwright-allure-ghpages/actions/runs/${GITHUB_RUN_ID}" \
-          --arg reportUrl "https://github.com/i-am-wizard/playwright-allure-ghpages/actions/runs/${GITHUB_RUN_ID}" \
+          --arg reportUrl "https://i-am-wizard.github.io/allure-ghpage/" \
           --arg reportName "Allure report from Github action" \
           '$ARGS.named'
          )
