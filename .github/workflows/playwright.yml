@@ -41,8 +41,8 @@ jobs:
           jq --null-input \
           --arg name "${GITHUB_WORKFLOW}" \
           --arg type "Github Action" \
-          --arg url "${height}" \
-          --arg buildOrder "${width}" \
+          --arg url "www.google.com" \
+          --arg buildOrder "${GITHUB_RUN_ID}" \
           --arg buildName "${GITHUB_WORKFLOW}" \
           --arg buildUrl "https://github.com/i-am-wizard/playwright-allure-ghpages/actions/runs/${GITHUB_RUN_ID}" \
           --arg reportUrl "https://github.com/i-am-wizard/playwright-allure-ghpages/actions/runs/${GITHUB_RUN_ID}" \
