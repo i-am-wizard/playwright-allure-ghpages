@@ -37,6 +37,21 @@ jobs:
     - name: Update github page with new report
       if: always()
       run: |
+        json_string=$(
+          jq --null-input \
+          --arg name "${GITHUB_WORKFLOW}" \
+          --arg type "Github Action" \
+          --arg url "${height}" \
+          --arg buildOrder "${width}" \
+          --arg buildName "${GITHUB_WORKFLOW}" \
+          --arg buildUrl "https://github.com/i-am-wizard/playwright-allure-ghpages/actions/runs/${GITHUB_RUN_ID}" \
+          --arg reportUrl "https://github.com/i-am-wizard/playwright-allure-ghpages/actions/runs/${GITHUB_RUN_ID}" \
+          --arg reportName "Allure report from Github action" \
+          '$ARGS.named'
+         )
+  
+        echo $json_string > executor.json
+        mv executor.json allure-results
         cp -r allure-ghpage/history allure-results
         npx allure generate --clean
         cp -r allure-report/*  allure-ghpage

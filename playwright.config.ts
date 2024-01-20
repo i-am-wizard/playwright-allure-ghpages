@@ -1,5 +1,4 @@
 import { defineConfig, devices } from '@playwright/test';
-import { testPlanFilter } from "allure-playwright/dist/testplan";
 
 /**
  * Read environment variables from file.
@@ -25,18 +24,12 @@ export default defineConfig({
     [
       "allure-playwright",
       {
-        detail: true,
-        outputFolder: "my-allure-results",
         environmentInfo: {
           framework: "playwright",
         },
-        executorInfo: {
-          buildUrl: "www.google.com"
-        }
       },
     ],
   ],
-  grep: testPlanFilter(),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
