@@ -44,17 +44,21 @@ jobs:
           --arg url "www.google.com" \
           --arg buildOrder "${GITHUB_RUN_NUMBER}" \
           --arg buildName "${GITHUB_WORKFLOW}" \
-          --arg buildUrl "https://i-am-wizard.github.io/allure-ghpage" \
-          --arg reportUrl "https://github.com/i-am-wizard/playwright-allure-ghpages/actions/runs/${GITHUB_RUN_ID}" \
+          --arg buildUrl "https://github.com/i-am-wizard/playwright-allure-ghpages/actions/runs/${GITHUB_RUN_ID}" \
+          --arg reportUrl "https://i-am-wizard.github.io/allure-ghpage/${GITHUB_RUN_NUMBER}" \
           --arg reportName "Allure report from Github action" \
           '$ARGS.named'
          )
-  
         echo $json_string > executor.json
         mv executor.json allure-results
+        
         cp -r allure-ghpage/history allure-results
         npx allure generate --clean
+        
+        mkdir ${GITHUB_RUN_NUMBER}
         cp -r allure-report/*  allure-ghpage
+        cp -r allure-report/* ${GITHUB_RUN_NUMBER}
+        
         cd allure-ghpage
         git remote add dest git@github.com:i-am-wizard/allure-ghpage.git
         git add .
