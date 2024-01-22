@@ -56,8 +56,10 @@ jobs:
         npx allure generate --clean
         
         mkdir ${GITHUB_RUN_NUMBER}
-        cp -r allure-report/*  allure-ghpage
+        mv ${GITHUB_RUN_NUMBER} allure-ghpage
         cp -r allure-report/* ${GITHUB_RUN_NUMBER}
+        cp -r allure-report/* allure-ghpage/${GITHUB_RUN_NUMBER}
+        
         
         cd allure-ghpage
         git remote add dest git@github.com:i-am-wizard/allure-ghpage.git
