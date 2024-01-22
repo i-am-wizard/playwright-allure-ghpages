@@ -57,7 +57,7 @@ jobs:
         
         mkdir ${GITHUB_RUN_NUMBER}
         mv ${GITHUB_RUN_NUMBER} allure-ghpage
-        cp -r allure-report/* ${GITHUB_RUN_NUMBER}
+        cp -r allure-report/* allure-ghpage
         cp -r allure-report/* allure-ghpage/${GITHUB_RUN_NUMBER}
         
         
